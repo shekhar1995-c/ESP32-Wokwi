@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Shekhar Nandanwar",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    { "type": "board-ds18b20", "id": "temp1", "top": 27.67, "left": 148.08, "attrs": {} },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -133.76,
+      "left": -190.81,
+      "attrs": { "pixels": "16" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 120,
+      "left": 162.65,
+      "rotate": 90,
+      "attrs": { "value": "4700" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "temp1:DQ", "esp:4", "green", [ "v0" ] ],
+    [ "temp1:GND", "esp:GND.3", "black", [ "v0" ] ],
+    [ "temp1:VCC", "esp:3V3", "red", [ "v0", "h19.2", "v-96", "h-192" ] ],
+    [ "ring1:VCC", "esp:3V3", "red", [ "v9.6" ] ],
+    [ "ring1:DIN", "esp:15", "green", [ "v201.6", "h230.4", "v-48" ] ],
+    [ "ring1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "temp1:VCC", "r1:1", "red", [ "v0", "h19.2" ] ],
+    [ "r1:2", "esp:4", "green", [ "h-28.8", "v-10.8" ] ]
+  ],
+  "dependencies": {}
+}
