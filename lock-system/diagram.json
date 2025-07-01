@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Shekhar Nandanwar",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": -290, "left": -292, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 22.34,
+      "left": 201.83,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 122.8, "left": 163.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "keypad1:C2", "esp:32", "green", [ "v0" ] ],
+    [ "keypad1:C1", "esp:33", "green", [ "v0" ] ],
+    [ "keypad1:R4", "esp:25", "green", [ "v0" ] ],
+    [ "keypad1:R3", "esp:26", "green", [ "v0" ] ],
+    [ "keypad1:R2", "esp:27", "green", [ "v0" ] ],
+    [ "keypad1:R1", "esp:14", "green", [ "v0" ] ],
+    [ "servo1:PWM", "esp:4", "green", [ "h-38.4", "v-47.8" ] ],
+    [ "servo1:GND", "esp:GND.3", "black", [ "h-28.8", "v-86.4" ] ],
+    [ "esp:5V", "servo1:V+", "red", [ "h4.99", "v28.8", "h134.4", "v-48" ] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v-38.4", "h-134.33", "v86.4" ] ],
+    [ "oled1:SCL", "esp:22", "green", [ "v-28.8", "h-114.9", "v48" ] ],
+    [ "esp:GND.2", "oled1:GND", "black", [ "v-9.6", "h139.24" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v-19.2", "h-134.25", "v-19.2", "h-124.8", "v38.4" ] ],
+    [ "keypad1:C3", "esp:RX", "green", [ "v28.8", "h57.45", "v-86.4", "h182.4", "v76.8" ] ],
+    [ "esp:TX", "keypad1:C4", "green", [ "h19.2", "v-76.8", "h-239.7" ] ]
+  ],
+  "dependencies": {}
+}

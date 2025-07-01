@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "Shekhar Nandanwar",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-neopixel",
+      "id": "rgb1",
+      "top": 80.5,
+      "left": 210.4,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 109.85,
+      "left": 123.4,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-neopixel",
+      "id": "rgb2",
+      "top": 80.5,
+      "left": 296.8,
+      "rotate": 180,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "rgb1:VSS", "esp:GND.3", "black", [ "v0" ] ],
+    [ "esp:5V", "rgb1:VDD", "red", [ "h-4.61", "v19.2", "h268.8", "v-115.2" ] ],
+    [ "esp:5", "r1:1", "green", [ "h0" ] ],
+    [ "rgb1:DIN", "r1:2", "green", [ "h0" ] ],
+    [ "rgb1:DOUT", "rgb2:DIN", "green", [ "h48", "v10.5" ] ],
+    [ "rgb2:VSS", "rgb1:VSS", "black", [ "v-27.9", "h-85.6" ] ],
+    [ "rgb1:VDD", "rgb2:VDD", "red", [ "h38.4", "v28.8", "h48" ] ]
+  ],
+  "dependencies": {}
+}

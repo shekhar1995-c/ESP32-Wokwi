@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Shekhar Nandanwar",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 141.2,
+      "left": -237.2,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": -58.2,
+      "left": -186.6,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "joystick1:HORZ", "esp:34", "green", [ "v0" ] ],
+    [ "joystick1:VERT", "esp:35", "green", [ "v0" ] ],
+    [ "servo1:PWM", "esp:13", "green", [ "h38.4", "v-29" ] ],
+    [ "joystick1:VCC", "esp:5V", "red", [ "v86.4", "h105.6", "v57.6" ] ],
+    [ "esp:5V", "servo1:V+", "red", [ "h0" ] ],
+    [ "servo1:GND", "esp:GND.1", "black", [ "h48", "v-57.6" ] ],
+    [ "joystick1:GND", "esp:GND.1", "black", [ "v57.6", "h96", "v38.4" ] ]
+  ],
+  "dependencies": {}
+}

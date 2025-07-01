@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "author": "Shekhar Nandanwar",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg1",
+      "top": -115.24,
+      "left": -40.97,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 131,
+      "left": -144,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 73.4,
+      "left": -144,
+      "attrs": { "color": "blue", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "sevseg1:VCC", "esp:3V3", "red", [ "h19.2", "v57.6", "h-153.6" ] ],
+    [ "sevseg1:GND", "esp:GND.2", "black", [ "h0", "v86.4" ] ],
+    [ "sevseg1:CLK", "esp:22", "green", [ "h48", "v134.4" ] ],
+    [ "sevseg1:DIO", "esp:23", "blue", [ "h38.4", "v115.2" ] ],
+    [ "esp:26", "btn2:1.r", "blue", [ "h-33.41", "v-28.8", "h-9.6" ] ],
+    [ "esp:27", "btn1:1.r", "green", [ "h-33.41", "v19.2" ] ],
+    [ "esp:GND.1", "btn2:2.r", "black", [ "h-62.21", "v-48" ] ],
+    [ "esp:GND.1", "btn1:2.r", "black", [ "h-62.21", "v9.6" ] ]
+  ],
+  "dependencies": {}
+}

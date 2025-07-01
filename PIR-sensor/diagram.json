@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "author": "Shekhar Nandanwar",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -92, "left": -132.18, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 121.2,
+      "left": 186.6,
+      "attrs": { "color": "red", "flip": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 157.55,
+      "left": 115.2,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:13", "pir1:OUT", "green", [ "h0" ] ],
+    [ "pir1:VCC", "esp:3V3", "red", [ "v19.2", "h105.6" ] ],
+    [ "pir1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:2", "r1:1", "green", [ "h0" ] ],
+    [ "led1:A", "r1:2", "green", [ "v0" ] ],
+    [ "esp:GND.3", "led1:C", "black", [ "h139.24", "v76.8" ] ]
+  ],
+  "dependencies": {}
+}
